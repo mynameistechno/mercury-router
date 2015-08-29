@@ -6,6 +6,9 @@ var document = require('global/document');
 
 window.addEventListener = function polyAddEventListneer() { return false; };
 document.location = { href: '/articles?page=25' };
+window.history = {
+  pushState: function polyPushState() {}
+};
 
 var router = require('../index');
 var anchor = router.anchor;
