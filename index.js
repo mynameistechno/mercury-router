@@ -12,7 +12,7 @@ function Render(state, opts) {
 }
 
 RouterComponent.anchor = require('./anchor');
-RouterComponent.navigate = require('./lib/route-navigate');
+RouterComponent.navigate = require('./navigate');
 RouterComponent.render = Render;
 
 module.exports = RouterComponent;

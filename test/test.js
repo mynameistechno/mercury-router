@@ -12,6 +12,7 @@ window.history = {
 
 var router = require('../index');
 var anchor = router.anchor;
+var navigate = router.navigate;
 var atom = require('../router').atom;
 
 
@@ -20,6 +21,7 @@ test('init', function test_init(t) {
 
     t.ok(router.render, 'has render function');
     t.ok(router.anchor, 'has anchor function');
+    t.ok(router.navigate, 'has navigate function');
     t.ok(state, 'state init');
     t.end();
 });
@@ -38,5 +40,15 @@ test('anchor', function test_anchor(t) {
     var a = anchor({href: link});
 
     t.equal(a.properties.href, link, 'renders full link in href attribute');
+    t.end();
+});
+
+test('navigate', function navigateTest(t) {
+    var state = router();
+    var to = '/articles?page=1';
+
+    navigate(to);
+    t.equal(state(), to, 'state updated by navigate');
+
     t.end();
 });
