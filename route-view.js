@@ -4,20 +4,20 @@ var routeMap = require('route-map');
 
 module.exports = routeView;
 
-function routeView(defns, args) {
-    var defn = defn;
+function routeView(defn, args) {
+    var defns;
     var match;
     var res;
 
     if (args.base) {
-        defn = Object.keys(defn)
+        defns = Object.keys(defn)
             .reduce(function applyBase(acc, str) {
                 acc[args.base + str] = defn[str];
                 return acc;
             }, {});
     }
 
-    match = routeMap(defn);
+    match = routeMap(defns);
 
     res = match(args.route);
     if (!res) {
