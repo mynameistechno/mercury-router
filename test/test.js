@@ -3,16 +3,22 @@
 var test = require('tape');
 var window = require('global/window');
 var document = require('global/document');
-var router = require('../index');
-var anchor = router.anchor;
-var navigate = router.navigate;
-var atom = require('../router').atom;
+var router;
+var anchor;
+var navigate;
+var atom;
 
+// this needs to come before router imports
 window.addEventListener = function polyAddEventListneer() { return false; };
 document.location = { href: '/articles?page=25' };
 window.history = {
   pushState: function polyPushState() {}
 };
+
+router = require('../index');
+anchor = router.anchor;
+navigate = router.navigate;
+atom = require('../router').atom;
 
 
 test('init', function test_init(t) {
